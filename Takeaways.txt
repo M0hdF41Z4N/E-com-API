@@ -1,0 +1,23 @@
+Best Practices
+1. Using Correct Status Codes
+2. Error Handling
+3. Input Validation
+4. Using correct request methods
+5. Secured APIs
+6. Use naming conventions for URL (RestAPI naming conventions)
+
+Folder Structure
+Route Configuration
+Creating APIs
+Different API Methods
+Middlewares
+Route Params
+Query Params
+Testing api using postman
+Securing API using JWT token
+Documenting API using swagger
+CORS
+Logging
+Error Handling
+
+
