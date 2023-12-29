@@ -1,8 +1,23 @@
 import { getDB } from "../../config/mongodb.js";
 import { ApplicationError } from "../../error-handler/applicationError.js";
+import {userSchema} from "./user.schema";
 
+const UserModel = mongoose.model('User',userSchema);
 
 class UserRepository {
+
+    async resetPassword(userID,hashPassword) { 
+        try {
+            let user = await UserModel.findById(userID);
+            if (!user) { 
+                throw new ApplicationError("User not found",404);
+            }
+            user.password = hashPassword;
+            user.save();
+        } catch (error) {
+            throw new ApplicationError(error,500);
+        }
+    }
      
     async signUp(newUser){
         try {
