@@ -46,8 +46,11 @@ server.use("/api/order",OrderRouter);
 // Error handler middleware
 function ErrorHandler(err, req, res, next) { 
      console.log('err :', err);
+     if (e instanceof mongoose.Error.ValidationError) { 
+         res.status(err.status).send(err.message);
+    }
     if (err instanceof ApplicationError) {
-        res.status(err.status).send(err.message);
+        res.status(401).send(err.message);
     }
     res.status(500).send("Something went wrong, please try again");
 }

@@ -31,6 +31,9 @@ class UserRepository {
             await users.insertOne(newUser);
             return newUser;
         } catch (e) { 
+            if (e instanceof mongoose.Error.ValidationError) { 
+                throw e;
+            }
             throw new ApplicationError("Something went wrong",500);
         }
     }
