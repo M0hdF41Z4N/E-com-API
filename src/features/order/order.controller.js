@@ -1,5 +1,5 @@
-import OrderRepository from "./order.repository";
-import ApplicationError from "./application.error";
+import OrderRepository from "./order.repository.js";
+import { ApplicationError } from "../../error-handler/applicationError.js";
 
 export default class OrderController {
     constructor() {

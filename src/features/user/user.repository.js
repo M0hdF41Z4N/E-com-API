@@ -1,6 +1,7 @@
 import { getDB } from "../../config/mongodb.js";
 import { ApplicationError } from "../../error-handler/applicationError.js";
-import {userSchema} from "./user.schema";
+import {userSchema} from "./user.schema.js";
+import mongoose from "mongoose";
 
 const UserModel = mongoose.model('User',userSchema);
 
