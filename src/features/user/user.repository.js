@@ -24,12 +24,13 @@ class UserRepository {
         try {
 
             // connecting to DB
-            const db = getDB();
+            // const db = getDB();
             // Getting collection
-            const users = await db.collection('users');
+            // const users = await db.collection('users');
 
             // insert the document into the collection
-            await users.insertOne(newUser);
+            // await users.insertOne(newUser);
+            await UserModel.create(newUser);
             return newUser;
         } catch (e) { 
             if (e instanceof mongoose.Error.ValidationError) { 
@@ -42,12 +43,13 @@ class UserRepository {
     async signIn(email,password){
         try {
             // connecting to DB
-            const db = await getDB();
+            // const db = await getDB();
             // Getting collection
-            const users = await db.collection('users');
+            // const users = await db.collection('users');
 
             // finding user
-            let user = await users.findOne({email, password});
+            // let user = await users.findOne({email, password});
+            let user = await UserModel.findOne({email, password});
             if (!user) { 
                 throw new ApplicationError("Unauthorized",401);
             }else {
@@ -61,10 +63,11 @@ class UserRepository {
     async findByEmail(email){
         try {
             // connecting to DB
-            const db = await getDB();
+            // const db = await getDB();
             // Getting collection
-            const users = await db.collection('users');
-            const user = await users.findOne({ email: email });
+            // const users = await db.collection('users');
+            // const user = await users.findOne({ email: email });
+            const user = await UserModel.findOne({ email: email });
             if (user) { 
                 return user;
             }

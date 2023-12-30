@@ -15,6 +15,7 @@ import apiDocs from "./swagger.json" assert {type:"json"};
 import loggerMiddleware from "./src/middlewares/logger.middleware.js";
 import { ApplicationError } from "./src/error-handler/applicationError.js";
 import {connectToMongoDB} from "./src/config/mongodb.js";
+import { connectUsingMongoose } from './src/config/mongoose.js';
 import OrderRouter from './src/features/order/order.routes.js';
 // import AccessControlMiddleware from "./middleware/accessControlMiddleware.js";
 
@@ -66,7 +67,8 @@ server.use((req, res) => {
 // Listening server
 server.listen(port,()=>{
     console.log(`Server running on ${port}`);
-    connectToMongoDB();
+    // connectToMongoDB();
+    connectUsingMongoose();
 });
 
 // TODO
